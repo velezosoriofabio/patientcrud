@@ -13,6 +13,9 @@
       <li class="nav-item">
         <router-link to="/Crear" class="nav-link">Crear nuevo paciente</router-link>
       </li>
+      <li class="nav-item">
+        <router-link to="/consultar" class="nav-link">Consultar Resultados</router-link>
+      </li>
     </ul>
   </div>
 </nav>

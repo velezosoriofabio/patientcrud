@@ -1,90 +1,91 @@
 <template>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h1>Crear Nuevo Paciente</h1>
-            </div>
-            <div class="card-body">
-                <form v-on:submit.prevent="agregarPaciente">
-                    <!-- Documento -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Documento de identidad</span>
-                        <input v-model="paciente.doc" required type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <!-- Nombre -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Nombres</span>
-                        <input v-model="paciente.name" required  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Apellidos</span>
-                        <input v-model="paciente.lastname" required type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <!-- Edad -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Edad</span>
-                        <input v-model="paciente.edad" required type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <!-- Género (Lista desplegable) -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Género</span>
-                        <select v-model="paciente.genero" required class="form-select" aria-label="Default select example">
-                            <option value="" disabled selected>Seleccionar Género</option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Femenino">Femenino</option>
-                            <option value="Otro de los 92 generos">Otro</option>
-                        </select>
-                    </div>
-                    <!-- EPS (Lista desplegable) -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">EPS</span>
-                        <select v-model="paciente.eps" required class="form-select" aria-label="Default select example">
-                            <option value="" disabled selected>Seleccionar EPS</option>
-                            <option value="Sura">Sura</option>
-                            <option value="Sanitas">Sanitas</option>
-                            <option value="Compensar">Compensar</option>
-                            <option value="Compensar">Nueva EPS</option>
-                            <option value="Compensar">SaludTotal</option>
-                            <option value="Otra">Otra</option>
-                        </select>
-                    </div>
-                    <!-- Pruebas del Perfil Lipídico -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Colesterol Total (mg/dL)</span>
-                        <input v-model="paciente.cholt" required type="number" step="0.01" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Colesterol HDL (mg/dL)</span>
-                        <input v-model="paciente.hdl" required type="number" step="0.01" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Colesterol LDL (mg/dL)</span>
-                        <input v-model="paciente.ldl" required type="number" step="0.01" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Triglicéridos (mg/dL)</span>
-                        <input v-model="paciente.trig" required type="number" step="0.01" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-
-                    <!-- Botones -->
-                    <div class="btn-group" role="group" aria-label="">
-                        <button type="submit" class="btn btn-success">Guardar</button>
-                        <router-link :to="{name:'listar'}" class="btn btn-danger">Cancelar</router-link>
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer text-muted">
-                Ingeniería de software 2024-2
-            </div>
+    <div class="container mt-5">
+      <div class="text-end mb-3">
+        <img src="../assets/logo.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
+      </div>
+      <div class="card">
+        <div class="card-header text-center bg-primary text-white">
+          <h4>Formulario de Registro de Paciente</h4>
         </div>
+        <div class="card-body">
+          <form @submit.prevent="agregarPaciente">
+            <div class="mb-3">
+              <label for="documento" class="form-label text-white bg-primary text-center d-block">Documento de identidad:</label>
+              <input type="number" class="form-control text-center" id="documento" v-model="paciente.doc" placeholder="Ingrese el documento">
+            </div>
+            <div class="mb-3">
+              <label for="nombre" class="form-label text-white bg-primary text-center d-block">Nombre:</label>
+              <input type="text" class="form-control text-center" id="nombre" v-model="paciente.name" placeholder="Ingrese el nombre">
+            </div>
+            <div class="mb-3">
+              <label for="apellido" class="form-label text-white bg-primary text-center d-block">Apellido:</label>
+              <input type="text" class="form-control text-center" id="apellido" v-model="paciente.lastname" placeholder="Ingrese el apellido">
+            </div>
+            <div class="mb-3">
+              <label for="edad" class="form-label text-white bg-primary text-center d-block">Edad:</label>
+              <input type="number" class="form-control text-center" id="edad" v-model="paciente.edad" placeholder="Ingrese la edad">
+            </div>
+            <div class="mb-3">
+              <label for="genero" class="form-label text-white bg-primary text-center d-block">Seleccionar género:</label>
+              <select class="form-select" id="genero" v-model="paciente.genero">
+                <option selected>Seleccionar género</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Femenino">Otro</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="eps" class="form-label text-white bg-primary text-center d-block">Seleccionar EPS:</label>
+              <select class="form-select" id="eps" v-model="paciente.eps">
+                <option selected>Seleccionar EPS</option>
+                <option value="Sanitas">Sanitas</option>
+                <option value="Nueva EPS">Nueva EPS</option>
+                <option value="Coosalud">Sura</option>
+                <option value="Comfama">SaludTotal</option>
+                <option value="SaludCoop">Compensar</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="cholesterol" class="form-label text-white bg-primary text-center d-block">Colesterol total - CHOLT:</label>
+              <input type="number" step="0.01" class="form-control text-center" id="cholesterol" v-model="paciente.cholt" placeholder="Ingrese el colesterol total">
+            </div>
+            <div class="mb-3">
+              <label for="hdl" class="form-label text-white bg-primary text-center d-block">Lipoproteínas de Alta Densidad – HDL:</label>
+              <input type="number" step="0.01" class="form-control text-center" id="hdl" v-model="paciente.hdl" placeholder="Ingrese HDL">
+            </div>
+            <div class="mb-3">
+              <label for="ldl" class="form-label text-white bg-primary text-center d-block">Lipoproteínas de Baja Densidad – LDL:</label>
+              <input type="number" step="0.01" class="form-control text-center" id="ldl" v-model="paciente.ldl" placeholder="Ingrese LDL">
+            </div>
+            <div class="mb-3">
+              <label for="trig" class="form-label text-white bg-primary text-center d-block">Triglicéridos - TRIG:</label>
+              <input type="number" step="0.01" class="form-control text-center" id="trig" v-model="paciente.trig" placeholder="Ingrese triglicéridos">
+            </div>
+            <!-- Botones -->
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+              <router-link :to="{ name: 'listar' }" class="btn btn-secondary btn-lg ms-2">Cancelar</router-link>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer text-muted text-center">
+          @Ingeniería de Software 2024-2
+        </div>
+      </div>
     </div>
 </template>
 
 <script>
 export default {
-    data(){
-        return{
-            paciente:{}
-        }
+    data() {
+        return {
+            paciente: {}
+        };
     },
-    methods:{
-        agregarPaciente(){
-            console.log(this.paciente)
-            let datosPaciente={
+    methods: {
+        agregarPaciente() {
+            console.log(this.paciente);
+            let datosPaciente = {
                 id:null,
                 doc: this.paciente.doc,
                 name: this.paciente.name,
@@ -97,18 +98,29 @@ export default {
                 ldl: this.paciente.ldl,
                 trig: this.paciente.trig
             }
-            fetch('http://localhost/api/?insertar=1',{
+            fetch('http://localhost/api/?insertar=1', {
                 method: 'POST',
                 body: JSON.stringify(datosPaciente),
                 mode: 'no-cors'
             })
             .then(response => response.text())
-            .then((data)=>{
-                console.log(data)
-                window.location.href='listar'
+            .then((data) => {
+                console.log(data);
+                window.location.href = 'listar';
             })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         }
     }
-
-}
+};
 </script>
+
+<style scoped>
+.card {
+    background-color: #f8f9fa; /* Color de fondo claro para el card */
+}
+.bg-info {
+    background-color: #cce5ff !important; /* Azul más claro para el fondo de las etiquetas */
+}
+</style>

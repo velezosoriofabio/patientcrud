@@ -2,7 +2,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h1>Lista de Pacientes</h1>
+                <h1>Resultados</h1>
             </div>
             <div class="card-body">
                 <table class="table">
@@ -10,8 +10,14 @@
                         <tr>
                             <th>No.</th>
                             <th>Documento</th>
-                            <th>Nombre y Apellidos</th>
-                            <th>Acciones</th>
+                            <th>Nombres y Apellidos</th>
+                            <th>Edad</th>
+                            <th>Genero</th>
+                            <th>EPS</th>
+                            <th>Colesterol Total</th>
+                            <th>HDL</th>
+                            <th>LDL</th>
+                            <th>Trigliceridos</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -19,16 +25,20 @@
                             <td scope="row">{{ paciente.id}}</td>
                             <td>{{ paciente.doc}}</td>
                             <td>{{ paciente.name}} {{paciente.lastname }}</td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="">
-                                    <RouterLink :to="{name: 'resultado', params: {id: paciente.doc}}" class="btn btn-success">Resultado</RouterLink>
-                                    <RouterLink :to="{name: 'editar', params: {id: paciente.id}}" class="btn btn-primary">Editar</RouterLink>
-                                    <button type="button" v-on:click="borrarPaciente(paciente.id)" class="btn btn-danger">Borrar</button>
-                                </div>
-                            </td>
+                            <td>{{ paciente.edad}}</td>
+                            <td>{{ paciente.genero}}</td>
+                            <td>{{ paciente.eps}}</td>
+                            <td>{{ paciente.cholt}}</td>
+                            <td>{{ paciente.hdl}}</td>
+                            <td>{{ paciente.ldl}}</td>
+                            <td>{{ paciente.trig}}</td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="text-center mt-4">
+                    <router-link :to="{ name: 'listar' }" class="btn btn-secondary btn-lg ms-2">Volver a Lista</router-link>
+                    <router-link :to="{ name: 'consultar' }" class="btn btn-secondary btn-lg ms-2">Consultar otro paciente</router-link>
+                </div>
             </div>
             <div class="card-footer text-muted">
                 Ingeniería de software 2024-2
@@ -39,17 +49,17 @@
 
 <script>
 export default {
-    data(){
-        return{
-            pacientes:[]
+    data() {
+        return {
+            pacientes: []
         }
     },
-    created:function (){
-        this.consultarPacientes();
+    created:function(){
+        this.obtenerPacienteID()
     },
     methods:{
-        consultarPacientes(){
-            fetch('http://localhost/api/')
+        obtenerPacienteID(){
+            fetch('http://localhost/api/?resultado='+this.$route.params.id)
             .then(response => response.json())
             .then((data)=>{
                 console.log(data)
@@ -59,16 +69,8 @@ export default {
                 }
             })
             .catch(console.log)
-        },
-        borrarPaciente(id){
-            fetch('http://localhost/api/?borrar='+id)
-            .then(response => response.text())
-            .then((data)=>{
-                console.log(data)
-                this.consultarPacientes();
-            })
-            .catch(console.log)
         }
     }
+    
 }
 </script>
