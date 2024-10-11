@@ -1,24 +1,16 @@
-# crudpacientes
+# Grupo SPAM
 
-## Project setup
+## Integrantes:
 ```
-npm install
-```
+Juan Jose Alzate
+Mateo Oyuela Rivero
+Fabio Velez
 
-### Compiles and hot-reloads for development
-```
-npm run serve
 ```
 
-### Compiles and minifies for production
+### Archivo API:
 ```
-npm run build
+Guardar el archivo index.php que contiene la API de la siguiente manera:
+Carpeta de XAMPP:
+XAMPP/htdocs/api/index.php
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
