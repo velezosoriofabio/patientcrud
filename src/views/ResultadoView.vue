@@ -28,10 +28,37 @@
                             <td>{{ paciente.edad}}</td>
                             <td>{{ paciente.genero}}</td>
                             <td>{{ paciente.eps}}</td>
-                            <td>{{ paciente.cholt}}</td>
-                            <td>{{ paciente.hdl}}</td>
-                            <td>{{ paciente.ldl}}</td>
-                            <td>{{ paciente.trig}}</td>
+                            <td>{{ paciente.cholt}} mg/dl</td>
+                            <td>{{ paciente.hdl}} mg/dl</td>
+                            <td>{{ paciente.ldl}} mg/dl</td>
+                            <td>{{ paciente.trig}} mg/dl</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> 
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Rangos Normales</h1>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Colesterol Total</th>
+                            <th>HDL</th>
+                            <th>LDL</th>
+                            <th>Trigliceridos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>&lt; 200 mg/dl</td>
+                            <td>40-60 mg/dl</td>
+                            <td>&lt; 100 mg/dl</td>
+                            <td>&lt; 150 mg/dl</td>
                         </tr>
                     </tbody>
                 </table>
@@ -71,6 +98,6 @@ export default {
             .catch(console.log)
         }
     }
-    
+    
 }
 </script>
